@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    p params
     @question = Question.new(question_params)
     @question.save
     redirect_to @question
@@ -36,6 +37,6 @@ class QuestionsController < ApplicationController
 
   private 
   def question_params
-    params.require(:question).permit(:title, :content)
+    params.require(:question).permit(:title, :content, :solved_status)
   end
 end

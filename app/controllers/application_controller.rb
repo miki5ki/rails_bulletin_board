@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  before_action :authenticate_user!,except: [:sign_up]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

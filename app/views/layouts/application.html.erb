@@ -11,9 +11,9 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>  #この行を追記
+    <% if user_signed_in? %>
     <header>
-      <div><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>  #この行を追記
+      <div><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>
     </header>
     <% end %> 
     <%= yield %>

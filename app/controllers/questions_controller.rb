@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.page(params[:page]).reverse_order
     @questions = @questions.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 

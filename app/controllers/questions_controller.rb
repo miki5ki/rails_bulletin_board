@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @questions = @questions.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def show

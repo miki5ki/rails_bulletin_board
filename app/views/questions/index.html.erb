@@ -1,4 +1,10 @@
-<h1>Questionsの一覧</h1>
+<h1>質問の一覧</h1>
+<div class="row justify-content-end mb-3">
+  <%= form_with url: questions_path, method: :get, local: true do |f| %>
+   <%= f.text_field :search %>
+   <%= f.submit '検索する', name: nil %>
+  <% end %>
+</div>
 <table>
   <tr>
     <th>title</th>

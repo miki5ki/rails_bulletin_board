@@ -5,8 +5,7 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question)
   end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @question = Question.find(params[:question_id])
@@ -16,6 +15,7 @@ class AnswersController < ApplicationController
   end
 
   private
+
   def anser_params
     params.require(:answer).permit(:name, :content)
   end

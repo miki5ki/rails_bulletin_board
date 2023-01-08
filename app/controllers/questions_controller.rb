@@ -10,7 +10,6 @@ class QuestionsController < ApplicationController
     redirect_to @question
   end
 
-
   def edit
     @question = Question.find(params[:id])
   end
@@ -36,7 +35,8 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
-  private 
+  private
+
   def question_params
     params.require(:question).permit(:title, :content, :solved_status)
   end

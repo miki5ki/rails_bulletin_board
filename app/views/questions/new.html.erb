@@ -1,0 +1,22 @@
+<h1>質問の新規作成</h1>
+<%= form_with model: @question do |form | %> 
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </p>
+<h2>質問の解決ステータス</h2>
+  <p>
+    <%= form.label :solved_status, '解決済み', value: 1 %>
+    <%= form.radio_button :solved_status, '1' %>
+    <%= form.label :solved_status, '未解決' , value: 0  %>
+    <%= form.radio_button :solved_status, '0' %>
+  </p>
+</p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

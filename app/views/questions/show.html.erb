@@ -1,0 +1,44 @@
+<h1>質問の詳細</h1>
+  <p>
+    <text>title:</text>
+    <%= @question.title %>
+  </p>
+  <p>
+    <text>content:</text>
+    <%= @question.content %>
+  </p>
+<h2>質問の解決ステータス</h2>
+  <p>
+  <%= form_with model: @question do |form | %> 
+    <%= form.label :solved_status, '解決済み', value: 1 %>
+    <%= form.radio_button :solved_status, '1' %>
+    <%= form.label :solved_status, '未解決' , value: 0  %>
+    <%= form.radio_button :solved_status, '0' %>
+    <%= form.submit "ステータスを更新" %>
+  <% end %>
+  </p>
+
+<h2>回答一覧</h2>
+<%= @question.answers.each do | answer | %>
+  <p>
+    <text>conten:</text>
+    <%= answer.content %>
+  </p>
+  <p>
+    <%= link_to 'Destroy Answer' ,[answer.question, answer],
+      data:{ turbo_method: 'delete', turbo_confirm:'Are you sure?'} %>
+  </p>
+<% end %>
+
+
+
+<h2>回答の追加</h2>
+  <%= form_with model: [@question, @question.answers.build] do | form | %>
+  <p>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+  <%= form.submit "コメントを追加" %>
+  </p>
+  <% end %>

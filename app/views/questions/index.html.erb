@@ -1,0 +1,29 @@
+<h1>質問の一覧</h1>
+<div class="row justify-content-end mb-3">
+  <%= form_with url: questions_path, method: :get, local: true do |f| %>
+   <%= f.text_field :search %>
+   <%= f.submit '検索する', name: nil %>
+  <% end %>
+</div>
+<table>
+  <tr>
+    <th>title</th>
+    <th>content</th>
+    <th>id</th>
+    <th>link</th>
+  </tr>
+  <%= @questions.each do |question| %>
+  <tr>
+    <td><%= question.title %></td>
+    <td><%= question.content %></td>
+    <td><%= question.id %></td>
+    <td><%= link_to 'show' ,question_path(question) %></td>
+    <td><%= link_to 'edit' ,edit_question_path(question) %></td>
+    <td><%= link_to 'destroy' ,question_path(question), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?'} %></td>
+  </tr>
+  <% end %>
+</table>
+<p>
+  <%= paginate @questions %>
+</p>
+
